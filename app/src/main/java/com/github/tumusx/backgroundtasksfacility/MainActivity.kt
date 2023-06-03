@@ -17,27 +17,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         EasyTaskAlarm.EasyAlarmTaskBuilder()
-            .registerAlarmType(AlarmsType.SET_EXACT)
+            .registerAlarmType(AlarmsType.SET_ALARM_CLOCK)
             .registerAlarmManager(this)
             .registerBroadcastReceiverAlarm(AlarmReceiver(), this)
             .calendarInTime(Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, 1)
-                set(Calendar.MINUTE, 59)
-                set(Calendar.AM_PM, Calendar.AM)
-                set(Calendar.DAY_OF_MONTH, 3)
-                set(Calendar.MONTH, 6)
-                set(Calendar.YEAR, 2023)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
+                set(Calendar.HOUR_OF_DAY, 2)
+                set(Calendar.MINUTE, 9)
             })
             .setAlarm()
             .builder()
     }
+}
 
-    inner class AlarmReceiver : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            Toast.makeText(context, "Alarm", Toast.LENGTH_SHORT).show()
-            Log.d("Alarm", "Alarm")
-        }
+
+ class AlarmReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context?, intent: Intent?) {
+        Log.d("Alarm", "Alarm")
+        Toast.makeText(context, "Alarm", Toast.LENGTH_SHORT).show()
     }
 }

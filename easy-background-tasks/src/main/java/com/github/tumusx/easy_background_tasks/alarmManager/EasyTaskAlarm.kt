@@ -65,13 +65,9 @@ class EasyTaskAlarm {
 
         fun calendarInTime(calendar: Calendar) = apply {
             Calendar.getInstance().apply {
+                timeInMillis = System.currentTimeMillis()
                 set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY))
-                set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH))
-                set(Calendar.MONTH, calendar.get(Calendar.MONTH))
-                set(Calendar.YEAR, calendar.get(Calendar.YEAR))
                 set(Calendar.MINUTE, calendar.get(Calendar.MINUTE))
-                set(Calendar.SECOND, calendar.get(Calendar.SECOND))
-                set(Calendar.MILLISECOND, calendar.get(Calendar.MILLISECOND))
                 this@EasyAlarmTaskBuilder.time = timeInMillis
             }
         }
